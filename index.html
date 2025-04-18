@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry My Friend ❤️</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffebee;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        
+        .container {
+            max-width: 600px; /* Changed from 800px to 600px */
+            margin: 0 auto;
+            padding: 15px; /* Changed from 20px to 15px */
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            font-size: 2.5em;
+        }
+        
+        .apology {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .question {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .question.active {
+            display: block;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background-color: #ffb6c1;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background-color: #ff8fab;
+            transform: scale(1.05);
+        }
+        
+        .special-message {
+            font-size: 1.8em;
+            color: #ff4757;
+            margin-top: 30px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+            100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Custom alert style */
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .alert-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+            animation: alertEnter 0.5s;
+        }
+        
+        @keyframes alertEnter {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .alert-title {
+            font-size: 1.8em;
+            color: #ff4757;
+            margin-bottom: 15px;
+        }
+        
+        .alert-message {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        
+        .alert-button {
+            background-color: #f37878;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .alert-button:hover {
+            background-color: #ff4757;
+            transform: scale(1.05);
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #ff6b6b;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HI MANANGGGGGGG BAHAHA</h1>
+        
+        <div class="apology">
+            answeram man agitoy 5 question lang
+            wag mo pansinin yung mga heart heart 
+            eta jay practice lang HEHE
+        </div>
+        
+         <!-- Question 1 -->
+         <div class="question active" id="question1">
+            <h2>Question 1 of 5:</h2>
+            <p>Aniya favorite mo nga color?</p>
+            <div class="options">
+                <button onclick="nextQuestion(1)">Blue</button>
+                <button onclick="nextQuestion(1)">Pink</button>
+                <button onclick="nextQuestion(1)">yellow</button>
+                <button onclick="nextQuestion(1)">Rainbow</button>
+            </div>
+        </div>
+        
+        <!-- Question 2 -->
+        <div class="question" id="question2">
+            <h2>Question 2 of 5:</h2>
+            <p>Aniya kayat mo dita HAHA?</p>
+            <div class="options">
+                <button onclick="nextQuestion(2)">Pepsi</button>
+                <button onclick="nextQuestion(2)">Tea</button>
+                <button onclick="nextQuestion(2)">Milk</button>
+                <button onclick="nextQuestion(2)">Water</button>
+            </div>
+        </div>
+        
+        <!-- Question 3 -->
+        <div class="question" id="question3">
+            <h2>Question 3 of 5:</h2>
+            <p>Niya season nga trip mo?</p>
+            <div class="options">
+                <button onclick="nextQuestion(3)">Spring</button>
+                <button onclick="nextQuestion(3)">Summer</button>
+                <button onclick="nextQuestion(3)">Fall</button>
+                <button onclick="nextQuestion(3)">Winter</button>
+            </div>
+        </div>
+        
+        <!-- Question 4 -->
+        <div class="question" id="question4">
+            <h2>Question 4 of 5:</h2>
+            <p>niya trip mo no weekend?</p>
+            <div class="options">
+                <button onclick="nextQuestion(4)">Sleeping in</button>
+                <button onclick="nextQuestion(4)">Going out</button>
+                <button onclick="nextQuestion(4)">Watching movies</button>
+                <button onclick="nextQuestion(4)">Trying new food</button>
+            </div>
+        </div>
+        
+        <!-- Question 5 -->
+        <div class="question" id="question5">
+            <h2>Final Question:</h2>
+            <p>last BHAHA niya color ti sky?</p>
+            <div class="options">
+<button onclick="showFinalAlert()">blue</button>
+<button onclick="showFinalAlert()">redt</button>
+<button onclick="showFinalAlert()">green</button>
+<button onclick="showFinalAlert()">black</button>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <!-- Custom Alert -->
+    <div class="custom-alert" id="customAlert">
+        <div class="alert-content">
+            <div class="alert-title">Thank You!</div>
+            <div class="alert-message">sorry na ate unblock nakon ah ❤️</div>
+            <button class="alert-button" onclick="closeAlert()">Close</button>
+        </div>
+    </div>
+
+   
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        
+        function nextQuestion(questionNum, choice) {
+            // Hide current question
+            document.getElementById('question' + questionNum).classList.remove('active');
+            
+            // Show next question
+            currentQuestion = questionNum + 1;
+            document.getElementById('question' + currentQuestion).classList.add('active');
+            
+            // Update progress bar
+            updateProgress();
+            
+            // Create hearts
+            createHearts();
+        }
+        
+        function showFinalAlert(choice) {
+            // Create lots of hearts
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createHearts(), i * 100);
+            }
+            
+            // Show custom alert
+            document.getElementById('customAlert').style.display = 'flex';
+        }
+        
+        function closeAlert() {
+            document.getElementById('customAlert').style.display = 'none';
+        }
+        
+        function createHearts() {
+            // Create multiple hearts
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤️';
+                    heart.className = 'heart';
+                    
+                    // Random position
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = window.innerHeight + 'px';
+                    
+                    // Random size
+                    const size = Math.random() * 30 + 20;
+                    heart.style.fontSize = size + 'px';
+                    
+                    // Random animation duration
+                    heart.style.animationDuration = Math.random() * 4 + 3 + 's';
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Remove heart after animation
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+                }, i * 200);
+            }
+        }
+        
+        // Create some initial hearts
+        window.onload = function() {
+            createHearts();
+            setInterval(createHearts, 3000);
+            updateProgress();
+        };
+    </script>
+</body>
+</html>
